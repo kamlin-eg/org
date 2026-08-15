@@ -10,12 +10,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="kamlin-logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
+
+<style id="kamlin-real-logo-style">
+.kamlin-real-logo{
+  width:170px;
+  max-width:34vw;
+  height:auto;
+  object-fit:contain;
+  display:block;
+}
+@media (max-width:768px){
+  .kamlin-real-logo{width:130px;max-width:42vw;}
+}
+</style>
+
 </head>
 <body>
   <header class="topbar">
     <div class="container nav">
       <a class="brand" href="#home" aria-label="كاملين">
-        <img class="brand-logo" src="kamlin-logo.svg" alt="شعار كاملين" />
+        <img src="assets/kamlin-logo.png" alt="Kamlin" class="kamlin-real-logo">
         <span>
           <strong>كاملين</strong>
           <small>للنظافة الفائقة وإدارة المرافق</small>

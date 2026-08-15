@@ -9,10 +9,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="kamlin-logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="admin.css" />
+
+<style id="kamlin-real-logo-style">
+.kamlin-real-logo{
+  width:170px;
+  max-width:34vw;
+  height:auto;
+  object-fit:contain;
+  display:block;
+}
+@media (max-width:768px){
+  .kamlin-real-logo{width:130px;max-width:42vw;}
+}
+</style>
+
 </head>
 <body>
   <aside class="sidebar">
-    <div class="brand"><img class="admin-brand-logo" src="kamlin-logo.svg" alt="شعار كاملين"><div><b>كاملين</b><small>نظام إدارة الشركة</small></div></div>
+    <div class="brand"><img src="assets/kamlin-logo.png" alt="Kamlin" class="kamlin-real-logo"><div><b>كاملين</b><small>نظام إدارة الشركة</small></div></div>
     <button class="nav-link active" data-view="dashboard">📊 لوحة التحكم</button>
     <button class="nav-link" data-view="bookings">📥 الطلبات والحجوزات</button>
     <button class="nav-link" data-view="pest">🐜 مكافحة الآفات</button>
