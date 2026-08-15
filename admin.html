@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kamlin - نظام إدارة الشركة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="kamlin-logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><img class="admin-brand-logo" src="kamlin-logo.svg" alt="شعار كاملين"><div><b>كاملين</b><small>نظام إدارة الشركة</small></div></div>
+    <button class="nav-link active" data-view="dashboard">📊 لوحة التحكم</button>
+    <button class="nav-link" data-view="bookings">📥 الطلبات والحجوزات</button>
+    <button class="nav-link" data-view="pest">🐜 مكافحة الآفات</button>
+    <button class="nav-link" data-view="customers">👥 العملاء</button>
+    <button class="nav-link" data-view="followups">🔄 المتابعات والضمان</button>
+    <button class="nav-link" data-view="contracts">📄 العقود والعروض</button>
+    <a class="nav-link" href="index.html">🌐 الموقع العام</a>
+  </aside>
+
+  <main class="admin-main">
+    <header class="admin-top"><div><h1>نظام كاملين</h1><p>إدارة خدمات النظافة ومكافحة الحشرات من مكان واحد</p></div><button class="primary" onclick="openNewBooking()">+ طلب جديد</button></header>
+
+    <section id="dashboard" class="view active">
+      <div class="kpis">
+        <div><span>إجمالي الطلبات</span><strong id="kpiTotal">0</strong></div>
+        <div><span>طلبات جديدة</span><strong id="kpiNew">0</strong></div>
+        <div><span>مكافحة آفات</span><strong id="kpiPest">0</strong></div>
+        <div><span>متابعات قادمة</span><strong id="kpiFollow">0</strong></div>
+      </div>
+      <div class="grid-two">
+        <div class="panel"><div class="panel-head"><h3>أحدث الطلبات</h3><button onclick="switchView('bookings')">عرض الكل</button></div><div id="latestBookings"></div></div>
+        <div class="panel"><h3>توزيع الحالات</h3><div id="statusSummary" class="status-summary"></div></div>
+      </div>
+    </section>
+
+    <section id="bookings" class="view">
+      <div class="panel">
+        <div class="panel-head wrap"><h3>الطلبات والحجوزات</h3>
+          <div class="filters"><input id="searchInput" placeholder="بحث بالاسم أو الهاتف أو الخدمة"><select id="statusFilter"><option value="">كل الحالات</option><option>جديد</option><option>تم التواصل</option><option>معاينة</option><option>عرض سعر</option><option>مؤكد</option><option>قيد التنفيذ</option><option>مكتمل</option><option>ملغي</option></select></div>
+        </div>
+        <div class="table-wrap"><table><thead><tr><th>رقم</th><th>العميل</th><th>الخدمة</th><th>المنطقة</th><th>الحالة</th><th>المتابعة</th><th>إجراء</th></tr></thead><tbody id="bookingRows"></tbody></table></div>
+      </div>
+    </section>
+
+    <section id="pest" class="view">
+      <div class="panel">
+        <div class="panel-head"><div><h3>ملف مكافحة الحشرات والقوارض</h3><p>طلبات مكافحة الآفات فقط</p></div></div>
+        <div class="table-wrap"><table><thead><tr><th>رقم</th><th>العميل</th><th>نوع الآفة / الخدمة</th><th>الحالة</th><th>خطة المتابعة</th><th>الضمان</th><th></th></tr></thead><tbody id="pestRows"></tbody></table></div>
+      </div>
+    </section>
+
+    <section id="customers" class="view">
+      <div class="panel"><h3>سجل العملاء</h3><p class="muted">يتم إنشاء سجل العميل تلقائيًا من الطلبات المسجلة.</p><div class="table-wrap"><table><thead><tr><th>العميل</th><th>الهاتف</th><th>عدد الطلبات</th><th>آخر خدمة</th><th>آخر حالة</th></tr></thead><tbody id="customerRows"></tbody></table></div></div>
+    </section>
+
+    <section id="followups" class="view">
+      <div class="panel"><h3>المتابعات والضمانات</h3><div class="table-wrap"><table><thead><tr><th>العميل</th><th>الخدمة</th><th>موعد المتابعة</th><th>الضمان / الملاحظة</th><th>الحالة</th></tr></thead><tbody id="followRows"></tbody></table></div></div>
+    </section>
+
+    <section id="contracts" class="view">
+      <div class="panel">
+        <h3>العروض والعقود</h3>
+        <p class="muted">سجل قيمة عرض السعر أو العقد داخل تفاصيل كل طلب. هذا القسم يجمع الطلبات التي لديها قيمة مسجلة.</p>
+        <div class="table-wrap"><table><thead><tr><th>العميل</th><th>الخدمة</th><th>القيمة</th><th>الحالة</th><th>رقم الطلب</th></tr></thead><tbody id="contractRows"></tbody></table></div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="bookingDialog">
+    <form method="dialog" id="editForm">
+      <div class="dialog-head"><h3 id="dialogTitle">طلب جديد</h3><button value="cancel" class="x">×</button></div>
+      <input type="hidden" name="id" />
+      <div class="form-grid">
+        <label>اسم العميل<input name="name" required></label>
+        <label>الهاتف<input name="phone" required></label>
+        <label>الخدمة<input name="service" required></label>
+        <label>المنطقة<input name="area"></label>
+        <label>الحالة<select name="status"><option>جديد</option><option>تم التواصل</option><option>معاينة</option><option>عرض سعر</option><option>مؤكد</option><option>قيد التنفيذ</option><option>مكتمل</option><option>ملغي</option></select></label>
+        <label>المسؤول<input name="assignedTo" placeholder="اسم الموظف / المشرف"></label>
+        <label>موعد المتابعة<input type="date" name="followUp"></label>
+        <label>قيمة العرض / العقد<input type="number" min="0" step="0.01" name="quote"></label>
+        <label class="wide">الضمان / خطة المتابعة<input name="warranty" placeholder="مثال: متابعة بعد 14 يوم"></label>
+        <label class="wide">ملاحظات<textarea name="notes" rows="4"></textarea></label>
+      </div>
+      <div class="dialog-actions"><button value="cancel" class="secondary">إلغاء</button><button type="submit" value="default" class="primary">حفظ</button></div>
+    </form>
+  </dialog>
+
+  <script src="admin.js"></script>
+</body>
+</html>
