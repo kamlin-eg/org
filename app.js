@@ -39,7 +39,7 @@ function bindForm(id,statusId){
     const data=Object.fromEntries(new FormData(form).entries());
     if(!validPhone(data.phone)){
       status.className="form-status error";
-      status.textContent="من فضلك أدخل رقم هاتف صحيح.";
+      status.textContent="يرجى إدخال رقم هاتف صحيح.";
       return;
     }
     const item=createBooking(data);
