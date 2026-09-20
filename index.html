@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+<a class="skip-link" href="#services">انتقل إلى المحتوى</a>
+<div class="utility-bar"><div class="container"><span>كاملين • عناية بكل تفصيلة</span><a href="tel:+201030438805">اتصل بنا <b dir="ltr">0103 043 8805</b></a></div></div>
   <header class="topbar">
     <div class="container nav">
       <a class="brand" href="#home" aria-label="كاملين">
@@ -20,7 +22,7 @@
     <small>النظافة الفائقة | مكافحة الحشرات</small>
   </span>
 </a>
-      <button class="menu-btn" aria-label="فتح القائمة" onclick="toggleMenu()">☰</button>
+      <button class="menu-btn" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mainNav" onclick="toggleMenu()">☰</button>
       <nav id="mainNav">
         <a href="#services">الخدمات</a>
         <a href="#pest">مكافحة الحشرات</a>
@@ -36,12 +38,12 @@
     <section id="home" class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">نظافة احترافية + مكافحة آفات</span>
-          <h1>مكان أنظف، بيئة أكثر أمانًا، ومتابعة تقدر تعتمد عليها</h1>
+          <span class="eyebrow">نعتني بمكانك في القاهرة والجيزة</span>
+          <h1>نظافة تليق بمكانك.<br><em>وراحة تكمل يومك.</em></h1>
           <p class="lead">كاملين تقدم حلول تنظيف متكاملة للمنازل والشركات والمنشآت، مع خدمة مكافحة الحشرات والقوارض بخطة فحص ومعالجة ومتابعة واضحة.</p>
           <div class="hero-actions">
             <a class="btn primary" href="#booking">اطلب معاينة / خدمة</a>
-            <a class="btn ghost" href="https://wa.me/201030438805" target="_blank" rel="noopener">واتساب</a>
+            <a class="btn ghost" href="https://wa.me/201010420272" target="_blank" rel="noopener">واتساب</a>
           </div>
           <div class="stats">
             <div><strong>24/7</strong><span>استقبال الطلبات</span></div>
@@ -51,12 +53,12 @@
           </div>
         </div>
         <div class="hero-card">
-          <h3>احجز بسرعة</h3>
-          <p>أرسل بياناتك وسيظهر الطلب فورًا في لوحة إدارة كاملين.</p>
+          <span class="form-kicker">ابدأ مع كاملين</span><h3>خلّي النظافة علينا</h3>
+          <p>خطوة بسيطة لمكان أنظف. اترك بياناتك وسنتواصل معك لتحديد التفاصيل.</p>
           <form class="quick-form" id="quickBooking">
-            <input name="name" placeholder="الاسم" required />
-            <input name="phone" placeholder="رقم الهاتف" required />
-            <select name="service" required>
+            <input maxlength="120" autocomplete="name" name="name" aria-label="الاسم" placeholder="الاسم" required />
+            <input type="tel" inputmode="tel" autocomplete="tel" maxlength="22" name="phone" aria-label="رقم الهاتف" placeholder="رقم الهاتف" required />
+            <select name="service" aria-label="الخدمة المطلوبة" required>
               <option value="">اختر الخدمة</option>
               <option>تنظيف منزل / فيلا</option>
               <option>تنظيف شركة / مكتب</option>
@@ -69,7 +71,7 @@
             </select>
             <button class="btn primary full" type="submit">إرسال الطلب</button>
           </form>
-          <div class="form-status" id="quickStatus"></div>
+          <div class="form-status" role="status" aria-live="polite" id="quickStatus"></div>
         </div>
       </div>
     </section>
@@ -82,12 +84,12 @@
           <p>الخدمة تُحدد حسب حالة المكان والنتيجة المطلوبة، مع توفير الأدوات والخامات بواسطة الشركة وفق الاتفاق.</p>
         </div>
         <div class="cards three">
-          <article class="card"><span class="icon">🏠</span><h3>منازل وفلل</h3><p>تنظيف دوري وعميق وتجهيز قبل السكن أو بعد الانتقال.</p></article>
-          <article class="card"><span class="icon">🏢</span><h3>شركات ومكاتب</h3><p>خطط يومية وأسبوعية وشهرية مع متابعة مستوى الخدمة.</p></article>
-          <article class="card"><span class="icon">🏥</span><h3>منشآت طبية</h3><p>تنظيف منظم للمستشفيات والعيادات والمراكز مع مراعاة إجراءات السلامة.</p></article>
-          <article class="card"><span class="icon">🏨</span><h3>فنادق ومولات</h3><p>تشغيل فرق نظافة للمناطق العامة والمداخل والحمامات والمرافق.</p></article>
-          <article class="card"><span class="icon">🛋️</span><h3>سجاد وأنتريهات</h3><p>غسيل واستخلاص للأقمشة والسجاد والمراتب والكراسي.</p></article>
-          <article class="card"><span class="icon">🧱</span><h3>ما بعد التشطيب</h3><p>إزالة مخلفات وأتربة التشطيب وتنظيف تفصيلي قبل التسليم.</p></article>
+          <article class="card"><span class="icon">🏠</span><h3>منازل وفلل</h3><p>تنظيف دوري وعميق وتجهيز قبل السكن أو بعد الانتقال.</p><button class="service-link" data-book="تنظيف منزل / فيلا">اطلب الخدمة <span>↗</span></button></article>
+          <article class="card"><span class="icon">🏢</span><h3>شركات ومكاتب</h3><p>خطط يومية وأسبوعية وشهرية مع متابعة مستوى الخدمة.</p><button class="service-link" data-book="تنظيف شركة / مكتب">اطلب الخدمة <span>↗</span></button></article>
+          <article class="card"><span class="icon">🏥</span><h3>منشآت طبية</h3><p>تنظيف منظم للمستشفيات والعيادات والمراكز مع مراعاة إجراءات السلامة.</p><button class="service-link" data-book="تنظيف منشأة طبية">اطلب الخدمة <span>↗</span></button></article>
+          <article class="card"><span class="icon">🏨</span><h3>فنادق ومولات</h3><p>تشغيل فرق نظافة للمناطق العامة والمداخل والحمامات والمرافق.</p><button class="service-link" data-book="تنظيف فنادق ومولات">اطلب الخدمة <span>↗</span></button></article>
+          <article class="card"><span class="icon">🛋️</span><h3>سجاد وأنتريهات</h3><p>غسيل واستخلاص للأقمشة والسجاد والمراتب والكراسي.</p><button class="service-link" data-book="تنظيف سجاد وأنتريهات">اطلب الخدمة <span>↗</span></button></article>
+          <article class="card"><span class="icon">🧱</span><h3>ما بعد التشطيب</h3><p>إزالة مخلفات وأتربة التشطيب وتنظيف تفصيلي قبل التسليم.</p><button class="service-link" data-book="تنظيف بعد التشطيب">اطلب الخدمة <span>↗</span></button></article>
         </div>
       </div>
     </section>
@@ -124,7 +126,7 @@
         <div class="feature-grid">
           <div><span>🔍</span><h3>معاينة قبل التسعير</h3><p>تحديد الحالة والمساحة ونطاق العمل قبل العرض النهائي.</p></div>
           <div><span>🧰</span><h3>معدات مناسبة</h3><p>اختيار المعدات والأدوات وفق نوع الخدمة بدل حل واحد لكل الحالات.</p></div>
-          <div><span>📋</span><h3>توثيق الطلب</h3><p>كل طلب يدخل لوحة الإدارة بحالته وملاحظاته وموعد المتابعة.</p></div>
+          <div><span>📋</span><h3>توثيق الطلب</h3><p>نتابع تفاصيل خدمتك من أول تواصل حتى الانتهاء من التنفيذ.</p></div>
           <div><span>🔄</span><h3>متابعة دورية</h3><p>إمكانية جدولة زيارة أو اتصال متابعة بعد التنفيذ.</p></div>
           <div><span>💬</span><h3>واتساب مباشر</h3><p>زر تواصل سريع لرفع الصور وتوضيح الحالة قبل الزيارة.</p></div>
           <div><span>🏢</span><h3>أفراد وشركات</h3><p>حجز خدمة فردية أو عقد دوري للمنشآت.</p></div>
@@ -145,17 +147,9 @@
       </div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-head"><span class="eyebrow">آراء العملاء</span><h2>مساحة جاهزة لآراء حقيقية</h2><p>أضف هنا تقييمات العملاء بعد الحصول على موافقتهم، بدل استخدام تقييمات غير موثقة.</p></div>
-        <div class="cards three testimonials">
-          <article class="card"><div class="stars">★★★★★</div><p>“أضف تقييم عميل حقيقي هنا بعد تنفيذ الخدمة.”</p><strong>اسم العميل</strong><small>المنطقة</small></article>
-          <article class="card"><div class="stars">★★★★★</div><p>“أضف تقييم عميل حقيقي هنا بعد تنفيذ الخدمة.”</p><strong>اسم العميل</strong><small>المنطقة</small></article>
-          <article class="card"><div class="stars">★★★★★</div><p>“أضف تقييم عميل حقيقي هنا بعد تنفيذ الخدمة.”</p><strong>اسم العميل</strong><small>المنطقة</small></article>
-        </div>
-      </div>
-    </section>
+<section class="business-cta"><div class="container"><div><span class="eyebrow">لأصحاب الأعمال</span><h2>مكان عمل نظيف. كل يوم.</h2><p>خطة نظافة دورية تناسب مساحة منشأتك ومواعيد العمل، مع متابعة واضحة للخدمة.</p></div><button class="btn primary" data-book="عقد نظافة دوري">ناقش احتياجات شركتك ↗</button></div></section>
 
+    <section id="pricesSection" class="section" hidden><div class="container"><div class="section-head"><span class="eyebrow">باقات وخدمات</span><h2>خدمة تناسب احتياجك</h2><p>أسعار استرشادية بالجنيه المصري. السعر النهائي حسب المساحة والحالة ونطاق العمل المتفق عليه.</p></div><div id="priceList" class="cards three"></div></div></section>
     <section id="faq" class="section alt">
       <div class="container">
         <div class="section-head"><span class="eyebrow">الأسئلة الشائعة</span><h2>إجابات قبل الحجز</h2></div>
@@ -185,7 +179,7 @@
         <div>
           <span class="eyebrow">احجز الآن</span>
           <h2>أرسل طلبك لكاملين</h2>
-          <p>الطلب سيتم حفظه في لوحة الإدارة مع رقم مرجعي، ويمكن لفريق الشركة تحديث حالته وإضافة موعد متابعة.</p>
+          <p>احكِ لنا عن مكانك والخدمة المطلوبة. سنتواصل معك لتحديد نطاق العمل والتكلفة والموعد المناسب قبل تأكيد الحجز.</p>
           <ul class="checklist">
             <li>تنظيف منازل وشركات ومنشآت</li>
             <li>مكافحة حشرات وقوارض</li>
@@ -194,9 +188,9 @@
           </ul>
         </div>
         <form id="bookingForm" class="booking-form">
-          <div class="field"><label>الاسم الكامل</label><input name="name" required /></div>
-          <div class="field"><label>رقم الهاتف</label><input name="phone" required /></div>
-          <div class="field"><label>الخدمة</label>
+          <div class="field"><label>الاسم الكامل<input maxlength="120" autocomplete="name" name="name" required /></label></div>
+          <div class="field"><label>رقم الهاتف<input type="tel" inputmode="tel" autocomplete="tel" maxlength="22" name="phone" required /></label></div>
+          <div class="field"><label>الخدمة
             <select name="service" id="serviceSelect" required>
               <option value="">اختر الخدمة</option>
               <optgroup label="النظافة">
@@ -209,11 +203,11 @@
                 <option>برنامج حماية الفلل والحدائق</option><option>عقد مكافحة آفات دوري</option>
               </optgroup>
             </select>
-          </div>
-          <div class="field"><label>المحافظة / المنطقة</label><input name="area" placeholder="مثال: الجيزة - فيصل" /></div>
-          <div class="field full-col"><label>ملاحظات</label><textarea name="notes" rows="4" placeholder="المساحة، نوع المشكلة، الموعد المناسب..."></textarea></div>
+          </label></div>
+          <div class="field"><label>المحافظة / المنطقة<input maxlength="200" autocomplete="address-level2" name="area" placeholder="مثال: الجيزة - فيصل" /></label></div>
+          <div class="field full-col"><label>ملاحظات<textarea maxlength="2000" name="notes" rows="4" placeholder="المساحة، نوع المشكلة، الموعد المناسب..."></textarea></label></div>
           <button class="btn primary full-col" type="submit">إرسال طلب الحجز</button>
-          <div class="form-status full-col" id="bookingStatus"></div>
+          <div class="form-status full-col" role="status" aria-live="polite" id="bookingStatus"></div>
         </form>
       </div>
     </section>
@@ -223,24 +217,27 @@
         <div class="section-head"><span class="eyebrow">تواصل معنا</span><h2>كاملين أقرب لك</h2><p>اتصل مباشرة أو تواصل عبر واتساب أو البريد الإلكتروني.</p></div>
         <div class="cards three">
           <article class="card"><span class="icon">📞</span><h3>خالد</h3><p><a href="tel:+201030438805">01030438805</a></p><a class="btn primary" href="tel:+201030438805">اتصال</a></article>
-          <article class="card"><span class="icon">📱</span><h3>مازن</h3><p><a href="tel:+201010420272">01010420272</a></p><a class="btn primary" href="https://wa.me/201010420272" target="_blank" rel="noopener">واتساب</a></article>
+          <article class="card"><span class="icon">📱</span><h3>ام مازن</h3><p><a href="tel:+201010420272">01010420272</a></p><a class="btn primary" href="https://wa.me/201010420272" target="_blank" rel="noopener">واتساب</a></article>
           <article class="card"><span class="icon">✉️</span><h3>البريد الإلكتروني</h3><p><a href="mailto:kamlin.eg2025@gmail.com">kamlin.eg2025@gmail.com</a></p><a class="btn primary" href="mailto:kamlin.eg2025@gmail.com">إرسال بريد</a></article>
         </div>
       </div>
     </section>
   </main>
 
-  <a class="float-whatsapp" href="https://wa.me/201030438805" target="_blank" rel="noopener" aria-label="واتساب">💬</a>
+  <a class="float-whatsapp" href="https://wa.me/201010420272" target="_blank" rel="noopener" aria-label="واتساب">💬</a>
 
   <footer>
     <div class="container footer-grid">
-      <div><h3>كاملين</h3><p>خدمات نظافة احترافية وإدارة مرافق ومكافحة آفات للأفراد والشركات.</p></div>
+      <div><img src="kamlin-logo.png" class="footer-logo" alt="كاملين"><h3>كاملين</h3><p>خدمات نظافة احترافية وإدارة مرافق ومكافحة آفات للأفراد والشركات.</p></div>
       <div><h4>روابط سريعة</h4><a href="#services">الخدمات</a><a href="#pest">مكافحة الحشرات</a><a href="#booking">الحجز</a><a href="admin.html">لوحة الإدارة</a></div>
       <div><h4>التواصل</h4><a href="tel:+201030438805">01030438805</a><a href="tel:+201010420272">01010420272</a><a href="mailto:kamlin.eg2025@gmail.com">kamlin.eg2025@gmail.com</a></div>
     </div>
     <div class="copyright">© <span id="year"></span> Kamlin Cleaning Services. جميع الحقوق محفوظة.</div>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="config.js"></script>
+<script src="vendor/supabase.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
